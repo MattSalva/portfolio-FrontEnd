@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service';
 import {PersonaService} from "../../services/persona.service";
 import {persona} from "../../model/persona.model";
 import {Router} from "@angular/router";
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-header',
@@ -10,16 +10,37 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  miPortfolio:any;
+  //miPortfolio:any;
   persona: persona = new persona("", "", "");
-  constructor(private datosPortfolio:PortfolioService,public personaService: PersonaService, private router: Router) { }
+  //constructor(private datosPortfolio:PortfolioService,, private router: Router) { }
 
-  ngOnInit(): void {
+  isLogged = false
+  constructor(public personaService: PersonaService, private router: Router, private tokenService: TokenService) { }
+
+/*  ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe(data => {
       console.log(data);
       this.miPortfolio=data;
     });
     this.personaService.getPersona().subscribe(data => {this.persona = data});
+  }*/
+
+  ngOnInit(): void {
+
+    this.personaService.getPersona().subscribe(data => {this.persona = data});
+
+    if(this.tokenService.getToken()){
+      this.isLogged=true;
+    }
+    else{
+      this.isLogged = false;
+    }
+
+  }
+
+  onLogOut():void{
+    this.tokenService.logOut();
+    window.location.reload();
   }
 
   login(){
