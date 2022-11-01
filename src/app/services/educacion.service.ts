@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Educacion} from "../model/educacion";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducacionService {
-  URL = 'https://backend-mathiassalva.herokuapp.com/edu/';
+  //URL = 'https://backend-mathiassalva.herokuapp.com/edu/';
+  URL = environment.URL + '/edu/';
 
 
   constructor(private httpClient : HttpClient ) {}
