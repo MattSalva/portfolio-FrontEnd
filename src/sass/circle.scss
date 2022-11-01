@@ -7,8 +7,9 @@
 
 
 // Compass utilities
-@import "compass";
-
+/*@import "compass";
+*/
+@import '~compass-mixins/lib/compass/css3';
 
 // VARS
 $circle-width: 0.08em;
