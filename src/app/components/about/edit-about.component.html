@@ -1,0 +1,14 @@
+<div class="container" *ngIf="persona">
+  <div class="row">
+    <div>
+      <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+          <p><label for="descripcion">Descripción:</label></p>
+          <textarea id="descripcion" name="descripcion" rows="4" cols="50" [(ngModel)]="persona.descripcion" required>At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+          <br>
+        <button class="btn btn-primary">
+          Editar descripción
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

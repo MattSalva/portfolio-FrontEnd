@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonaService} from "../../services/persona.service";
-import {persona} from "../../model/persona.model";
+import {Persona} from "../../model/persona.model";
 import {Router} from "@angular/router";
 import {TokenService} from "../../services/token.service";
 
@@ -11,7 +11,7 @@ import {TokenService} from "../../services/token.service";
 })
 export class HeaderComponent implements OnInit {
   //miPortfolio:any;
-  persona: persona = new persona("", "", "");
+  persona: Persona = null;
   //constructor(private datosPortfolio:PortfolioService,, private router: Router) { }
 
   isLogged = false
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.personaService.getPersona().subscribe(data => {this.persona = data});
+    this.cargarPersona();
 
     if(this.tokenService.getToken()){
       this.isLogged=true;
@@ -45,5 +45,9 @@ export class HeaderComponent implements OnInit {
 
   login(){
     this.router.navigate(['/login'])
+  }
+  cargarPersona(){
+    this.personaService.detail(1).subscribe(data =>
+    {this.persona = data})
   }
 }
