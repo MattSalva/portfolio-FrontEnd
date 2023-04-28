@@ -37,14 +37,24 @@
   </div>
 </nav>
 <div class="container banner mt-2 rounded g-0">
+
     <img id="banner_image" class="img-fluid" src="assets/img/banner.jpg" alt="Foto de codigo"/>
     <div class="avatar-text align-items-center">
-      <button class="btn btn-warning" routerLink="/edit-header/1"><i class="bi bi-pencil-square"></i></button>
       <img class="avatar rounded-circle" src="{{persona.img}}" alt="Perfil de usuario"/>
-     <h1 class="text-image"><b>{{persona.nombre}} {{persona.apellido}}</b></h1>
-<!--      <h3 class="text-role">{{miPortfolio.position}}</h3>-->
-      <h3 class="text-role">Fullstack Developer Jr.</h3>
 
-      <h4 class="text-location">Buenos Aires, Argentina</h4>
+      <div class="row">
+        <div class="col">
+        <h1 class="text-image"><b>{{persona.nombre}} {{persona.apellido}}</b></h1>
+        <h3 class="text-role">Fullstack Developer Jr.</h3>
+        <h4 class="text-location">Buenos Aires, Argentina</h4>
+        </div>
+
+        <div class="col-1">
+        <button class="btn btn-warning" routerLink="/edit-header/1" *ngIf="isLogged"><i class="bi bi-pencil-square" ></i></button>
+        </div>
+
+
+      </div>
     </div>
-  </div>
+
+</div>

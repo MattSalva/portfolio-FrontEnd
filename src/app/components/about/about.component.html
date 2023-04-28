@@ -1,7 +1,14 @@
 <div id="about" class="container banner mt-2 px-0 rounded">
-
-    <div class="h1 mx-4">Acerca de</div>
+  <div class="h1 mx-4">Acerca de</div>
+  <div class="row my-2">
+    <div class="col">
     <p class="text-align mx-3 fw-semibold fst-normal fs-5 text-body">
-      {{persona.descripcion}} <button class="btn btn-warning" routerLink="/edit-about/{{persona.id}}"><i class="bi bi-pencil-square"></i></button>
+      {{persona.descripcion}}
     </p>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-warning" routerLink="/edit-about/{{persona.id}}" *ngIf="isLogged"><i class="bi bi-pencil-square" ></i></button>
+    </div>
+
+  </div>
 </div>
